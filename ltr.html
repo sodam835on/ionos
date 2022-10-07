@@ -1,0 +1,1115 @@
+<html lang="en">
+  <head>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+      }
+      .mail-detail-content {
+        box-sizing: border-box;
+        font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+          "Segoe UI", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+          "Segoe UI Symbol";
+        font-size: 13px;
+        font-weight: 400;
+        font-feature-settings: "liga" 0;
+        width: 100%;
+        position: relative;
+        padding: 0;
+      }
+      .ios.smartphone .mail-detail-content {
+        -webkit-overflow-scrolling: touch;
+        overflow-x: auto;
+      }
+      .smartphone .mail-detail-content {
+        font-size: 15px;
+      }
+      .mail-detail-content > div > [class$="-content"] {
+        padding: 0;
+      }
+      .mail-detail-content.plain-text {
+        font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+          "Segoe UI", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+          "Segoe UI Symbol";
+        white-space: pre-wrap;
+      }
+      .mail-detail-content.plain-text blockquote {
+        white-space: normal;
+      }
+      .mail-detail-content.fixed-width-font,
+      .mail-detail-content.fixed-width-font.plain-text,
+      .mail-detail-content.fixed-width-font blockquote,
+      .mail-detail-content.fixed-width-font.plain-text blockquote,
+      .mail-detail-content.fixed-width-font blockquote p,
+      .mail-detail-content.fixed-width-font.plain-text blockquote p {
+        font-family: monospace;
+        -webkit-font-feature-settings: normal;
+        font-feature-settings: normal;
+      }
+      .mail-detail-content.simple-mail {
+        max-width: 700px;
+      }
+      .mail-detail-content.simple-mail.big-screen {
+        max-width: 100%;
+      }
+      .mail-detail-content.simple-mail img {
+        max-width: 100%;
+        height: auto !important;
+      }
+      .mail-detail-content img[src=""] {
+        background-color: rgba(0, 0, 0, 0.1);
+        background-image: repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 20px,
+          rgba(255, 255, 255, 0.5) 20px,
+          rgba(255, 255, 255, 0.5) 40px
+        );
+      }
+      .mail-detail-content p {
+        font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+          "Segoe UI", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+          "Segoe UI Symbol";
+        margin: 0 0 1em;
+      }
+      .mail-detail-content h1 {
+        font-size: 28px;
+      }
+      .mail-detail-content h2 {
+        font-size: 21px;
+      }
+      .mail-detail-content h3 {
+        font-size: 16.38px;
+      }
+      .mail-detail-content h4 {
+        font-size: 14px;
+      }
+      .mail-detail-content h5 {
+        font-size: 11.62px;
+      }
+      .mail-detail-content h6 {
+        font-size: 9.38px;
+      }
+      .mail-detail-content a {
+        word-break: break-word;
+        text-decoration: none;
+        color: inherit;
+      }
+      .mail-detail-content a:hover {
+        color: inherit;
+      }
+      .mail-detail-content a[href] {
+        color: #3c61aa;
+        text-decoration: underline;
+      }
+      .mail-detail-content th {
+        padding: 8px;
+        text-align: center;
+      }
+      .mail-detail-content th[align="left"] {
+        text-align: left;
+      }
+      .mail-detail-content .calendar-detail .label {
+        display: block;
+        text-shadow: none;
+        font-weight: 400;
+        background-color: transparent;
+      }
+      .mail-detail-content img.emoji-softbank {
+        margin: 0 2px;
+      }
+      .mail-detail-content pre {
+        word-break: keep-all;
+        word-break: initial;
+        white-space: pre-wrap;
+        background-color: transparent;
+        border: 0 none;
+        border-radius: 0;
+      }
+      .mail-detail-content table {
+        font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+          "Segoe UI", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+          "Segoe UI Symbol";
+        font-size: 13px;
+        font-weight: 400;
+        font-feature-settings: "liga" 0;
+        line-height: normal;
+        border-collapse: collapse;
+      }
+      .mail-detail-content ul,
+      .mail-detail-content ol {
+        padding: 0;
+        padding-left: 16px;
+        margin: 1em 0 1em 24px;
+      }
+      .mail-detail-content ul {
+        list-style-type: disc;
+      }
+      .mail-detail-content ul ul {
+        list-style-type: circle;
+      }
+      .mail-detail-content ul ul ul {
+        list-style-type: square;
+      }
+      .mail-detail-content li {
+        line-height: normal;
+        margin-bottom: 0.5em;
+      }
+      .mail-detail-content blockquote {
+        color: #555;
+        font-size: 13px;
+        border-left: 2px solid #ddd;
+        padding: 0 0 0 16px;
+        margin: 16px 0;
+      }
+      .mail-detail-content blockquote p {
+        font-size: 13px;
+      }
+      .mail-detail-content blockquote blockquote {
+        border-color: #283f73;
+        margin: 8px 0;
+      }
+      .mail-detail-content.colorQuoted blockquote blockquote {
+        color: #283f73 !important;
+        border-left: 2px solid #283f73;
+      }
+      .mail-detail-content.colorQuoted
+        blockquote
+        blockquote
+        a[href]:not(.deep-link) {
+        color: #283f73;
+      }
+      .mail-detail-content.colorQuoted
+        blockquote
+        blockquote
+        a[href]:not(.deep-link):hover {
+        color: #1b2a4d;
+      }
+      .mail-detail-content.colorQuoted blockquote blockquote blockquote {
+        color: #dd0880 !important;
+        border-left: 2px solid #dd0880;
+      }
+      .mail-detail-content.colorQuoted
+        blockquote
+        blockquote
+        blockquote
+        a[href]:not(.deep-link) {
+        color: #dd0880;
+      }
+      .mail-detail-content.colorQuoted
+        blockquote
+        blockquote
+        blockquote
+        a[href]:not(.deep-link):hover {
+        color: #ac0663;
+      }
+      .mail-detail-content.colorQuoted
+        blockquote
+        blockquote
+        blockquote
+        blockquote {
+        color: #8f09c7 !important;
+        border-left: 2px solid #8f09c7;
+      }
+      .mail-detail-content.colorQuoted
+        blockquote
+        blockquote
+        blockquote
+        blockquote
+        a[href]:not(.deep-link) {
+        color: #8f09c7;
+      }
+      .mail-detail-content.colorQuoted
+        blockquote
+        blockquote
+        blockquote
+        blockquote
+        a[href]:not(.deep-link):hover {
+        color: #6c0796;
+      }
+      .mail-detail-content.colorQuoted
+        blockquote
+        blockquote
+        blockquote
+        blockquote
+        blockquote {
+        color: #767676 !important;
+        border-left: 2px solid #767676;
+      }
+      .mail-detail-content.colorQuoted
+        blockquote
+        blockquote
+        blockquote
+        blockquote
+        blockquote
+        a[href]:not(.deep-link) {
+        color: #767676;
+      }
+      .mail-detail-content.colorQuoted
+        blockquote
+        blockquote
+        blockquote
+        blockquote
+        blockquote
+        a[href]:not(.deep-link):hover {
+        color: #5d5d5d;
+      }
+      .mail-detail-content.disable-links a[href] {
+        color: #aaa !important;
+        text-decoration: line-through !important;
+        cursor: default !important;
+        pointer-events: none !important;
+      }
+      .mail-detail-content .blockquote-toggle {
+        color: #767676;
+        font-size: 13px;
+        padding-left: 56px;
+        margin: 16px 0;
+        min-height: 16px;
+        word-break: break-word;
+      }
+      .mail-detail-content .blockquote-toggle button.bqt {
+        color: #696969;
+        background-color: #eee;
+        padding: 1px 10px;
+        display: inline-block;
+        font-size: 14px;
+        line-height: 16px;
+        cursor: pointer;
+        outline: 0;
+        position: absolute;
+        left: 0;
+        border: 0;
+      }
+      .mail-detail-content .blockquote-toggle button.bqt:hover,
+      .mail-detail-content .blockquote-toggle button.bqt:focus {
+        color: #fff;
+        background-color: #3c61aa;
+        text-decoration: none;
+      }
+      .mail-detail-content .max-size-warning {
+        color: #767676;
+        padding: 16px 16px 0;
+        border-top: 1px solid #ddd;
+      }
+      .mail-detail-content a.deep-link {
+        color: #fff;
+        background-color: #3c61aa;
+        text-decoration: none;
+        font-size: 90%;
+        font-weight: 700;
+        font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+          "Segoe UI", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+          "Segoe UI Symbol" !important;
+        padding: 0.1em 8px;
+        border-radius: 3px;
+      }
+      .mail-detail-content a.deep-link:hover,
+      .mail-detail-content a.deep-link:focus,
+      .mail-detail-content a.deep-link:active {
+        color: #fff;
+        background-color: #2f4b84;
+      }
+      @media print {
+        .mail-detail-content .collapsed-blockquote {
+          display: block !important;
+        }
+        .mail-detail-content .blockquote-toggle {
+          display: none !important;
+        }
+      }
+      .mail-detail-content > div[id*="ox-"] > h1,
+      .mail-detail-content > div[id*="ox-"] > h2,
+      .mail-detail-content > div[id*="ox-"] > h3,
+      .mail-detail-content > div[id*="ox-"] > h4,
+      .mail-detail-content > div[id*="ox-"] > h5 {
+        margin-top: 0;
+      }
+    </style>
+  </head>
+  <body
+    style="
+      background-color: #fff;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 14px;
+      color: #707070;
+      padding: 35px 0 35px 0;
+    "
+    class="mail-detail-content noI18n colorQuoted"
+    role="complementary"
+    aria-label="Informations importantes concernant l'archivage de vos emails"
+  >
+    <style type="text/css">
+      @font-face {
+        font-family: "Open Sans";
+        src: url("https://e-mail-archiv.ionos.de/fonts/OpenSans-Regular.ttf");
+      }
+      .mail-detail-content a {
+        text-decoration: none;
+      }
+      .mail-detail-content a:hover {
+        text-decoration: underline;
+      }
+      .mail-detail-content p {
+        padding: 0px;
+        margin: 0px 0px 13px;
+        text-align: left;
+        font-family: "Open Sans", Arial, sans-serif;
+        font-size: 13px;
+        font-weight: normal;
+        color: rgb(80, 87, 91);
+        line-height: 17px;
+      }
+    </style>
+    <table
+      border="0"
+      cellpadding="0"
+      cellspacing="0"
+      style="text-align: center"
+      width="100%"
+    ></table>
+    <table
+      border="0"
+      cellpadding="0"
+      cellspacing="0"
+      style="border-collapse: collapse; width: 100%; border-spacing: 0"
+      width="100%"
+    >
+      <tbody>
+        <tr valign="top">
+          <td
+            align="left"
+            style="padding: 0px; min-width: 50%; width: 50%"
+            width="50%"
+          >
+            <table
+              bgcolor="#003d8f"
+              border="0"
+              cellpadding="0"
+              cellspacing="0"
+              style="
+                border-collapse: collapse;
+                background-color: #003d8f;
+                width: 100%;
+                border-spacing: 0;
+              "
+              width="100%"
+            >
+              <tbody>
+                <tr>
+                  <td
+                    height="220"
+                    style="padding: 0px; line-height: 220px; height: 220px"
+                  >
+                    <img
+                      alt=""
+                      border="0"
+                      data-imagetype="External"
+                      height="220"
+                      src="https://simg.ionos.com/2018/ONE/11/SPIN684-CUCO-18897-DE/px.gif"
+                      style="
+                        display: block;
+                        width: 1px;
+                        height: 220px;
+                        border: 0;
+                        visibility: hidden;
+                      "
+                      width="1"
+                    />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+          <td
+            align="left"
+            style="padding: 0px; min-width: 640px; width: 640px"
+            width="640"
+          >
+            <table
+              border="0"
+              cellpadding="0"
+              cellspacing="0"
+              style="border-collapse: collapse; width: 100%; border-spacing: 0"
+              width="100%"
+            >
+              <tbody>
+                <tr valign="top">
+                  <td
+                    align="left"
+                    bgcolor="#f8f8f8"
+                    style="padding: 0px; background-color: #f8f8f8"
+                  >
+                    <table
+                      bgcolor="#003d8f"
+                      border="0"
+                      cellpadding="0"
+                      cellspacing="0"
+                      style="
+                        border-collapse: collapse;
+                        background-color: #003d8f;
+                        width: 100%;
+                        border-spacing: 0;
+                      "
+                      width="100%"
+                    >
+                      <tbody>
+                        <tr valign="top">
+                          <td align="left" style="padding: 0px">
+                            <table
+                              border="0"
+                              cellpadding="0"
+                              cellspacing="0"
+                              style="border-collapse: collapse"
+                            >
+                              <tbody>
+                                <tr>
+                                  <td
+                                    height="20"
+                                    style="
+                                      padding: 0px;
+                                      width: 1px;
+                                      height: 20px;
+                                      line-height: 20px;
+                                    "
+                                    width="1"
+                                  >
+                                    <img
+                                      alt=""
+                                      border="0"
+                                      data-imagetype="External"
+                                      height="20"
+                                      src="https://simg.ionos.com/2018/ONE/11/SPIN684-CUCO-18897-DE/px.gif"
+                                      style="
+                                        display: block;
+                                        width: 1px;
+                                        height: 20px;
+                                        border: 0;
+                                        visibility: hidden;
+                                      "
+                                      width="1"
+                                    />
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <table
+                              border="0"
+                              cellpadding="0"
+                              cellspacing="0"
+                              style="
+                                border-collapse: collapse;
+                                width: 100%;
+                                border-spacing: 0;
+                              "
+                              width="100%"
+                            >
+                              <tbody>
+                                <tr valign="top">
+                                  <td
+                                    style="
+                                      padding: 0px;
+                                      min-width: 25px;
+                                      width: 25px;
+                                      line-height: 1px;
+                                      font-size: 0px;
+                                    "
+                                    width="25"
+                                  >
+                                    <img
+                                      alt=""
+                                      border="0"
+                                      data-imagetype="External"
+                                      height="1"
+                                      src="https://simg.ionos.com/2018/ONE/11/SPIN684-CUCO-18897-DE/px.gif"
+                                      style="
+                                        display: block;
+                                        width: 25px;
+                                        height: 1px;
+                                        border: 0;
+                                        visibility: hidden;
+                                      "
+                                      width="25"
+                                    />
+                                  </td>
+                                  <td
+                                    align="left"
+                                    height="55"
+                                    style="
+                                      padding: 0px;
+                                      min-width: 190px;
+                                      width: 190px;
+                                      min-height: 55px;
+                                      height: 55px;
+                                    "
+                                    width="190"
+                                  >
+                                    <img
+                                      alt="IONOS"
+                                      border="0"
+                                      data-imagetype="External"
+                                      height="auto"
+                                      src="https://e-mail-archiv.ionos.de/images/1n1/email-logo-@2x.png"
+                                      style="
+                                        color: #50575b;
+                                        margin: 0;
+                                        border: 0;
+                                        font-size: 13px;
+                                        font-family: 'Open Sans', Arial,
+                                          sans-serif;
+                                        line-height: 0;
+                                        display: block;
+                                        width: 100%;
+                                        height: auto;
+                                        padding: 0;
+                                      "
+                                      width="100%"
+                                    />
+                                  </td>
+                                  <td
+                                    align="right"
+                                    style="
+                                      padding: 0px;
+                                      font-size: 18px;
+                                      line-height: 22px;
+                                    "
+                                    valign="bottom"
+                                  >
+                                    <span
+                                      style="
+                                        color: #ffffff;
+                                        font-family: 'Open Sans', Arial,
+                                          sans-serif;
+                                        font-weight: bold;
+                                        font-size: 18px;
+                                        line-height: 22px;
+                                      "
+                                    ></span>
+                                  </td>
+                                  <td
+                                    style="
+                                      padding: 0px;
+                                      min-width: 25px;
+                                      width: 25px;
+                                      line-height: 1px;
+                                      font-size: 0px;
+                                    "
+                                    width="25"
+                                  >
+                                    <img
+                                      alt=""
+                                      border="0"
+                                      data-imagetype="External"
+                                      height="1"
+                                      src="https://simg.ionos.com/2018/ONE/11/SPIN684-CUCO-18897-DE/px.gif"
+                                      style="
+                                        display: block;
+                                        width: 25px;
+                                        height: 1px;
+                                        border: 0;
+                                        visibility: hidden;
+                                      "
+                                      width="25"
+                                    />
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <table
+                              border="0"
+                              cellpadding="0"
+                              cellspacing="0"
+                              style="border-collapse: collapse"
+                            >
+                              <tbody>
+                                <tr>
+                                  <td
+                                    height="15"
+                                    style="
+                                      padding: 0px;
+                                      width: 1px;
+                                      height: 15px;
+                                      line-height: 15px;
+                                    "
+                                    width="1"
+                                  >
+                                    <img
+                                      alt=""
+                                      border="0"
+                                      data-imagetype="External"
+                                      height="15"
+                                      src="https://simg.ionos.com/2018/ONE/11/SPIN684-CUCO-18897-DE/px.gif"
+                                      style="
+                                        display: block;
+                                        width: 1px;
+                                        height: 15px;
+                                        border: 0;
+                                        visibility: hidden;
+                                      "
+                                      width="1"
+                                    />
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr valign="top">
+                  <td
+                    align="left"
+                    bgcolor="#f8f8f8"
+                    style="padding: 0px; background-color: #f8f8f8"
+                  >
+                    <table
+                      border="0"
+                      cellpadding="0"
+                      cellspacing="0"
+                      style="border-collapse: collapse; border-spacing: 0"
+                    >
+                      <tbody>
+                        <tr valign="top">
+                          <td
+                            align="left"
+                            height="180"
+                            style="
+                              padding: 0px;
+                              min-width: 640px;
+                              width: 640px;
+                              min-height: 180px;
+                              height: 180px;
+                            "
+                            width="640"
+                          >
+                            <img
+                              alt=""
+                              border="0"
+                              data-imagetype="External"
+                              height="180"
+                              src="https://e-mail-archiv.ionos.de/images/1n1/FR-mailer-banner.png"
+                              style="
+                                color: #50575b;
+                                margin: 0;
+                                border: 0;
+                                font-size: 13px;
+                                font-family: 'Open Sans', Arial, sans-serif;
+                                line-height: 0;
+                                display: block;
+                                width: 640px;
+                                height: 150px;
+                                height: 147px;
+                                padding: 0;
+                              "
+                              width="640"
+                            />
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <table
+                      border="0"
+                      cellpadding="0"
+                      cellspacing="0"
+                      style="border-collapse: collapse"
+                    >
+                      <tbody>
+                        <tr>
+                          <td
+                            height="8"
+                            style="
+                              padding: 0px;
+                              width: 1px;
+                              height: 8px;
+                              line-height: 8px;
+                            "
+                            width="1"
+                          >
+                            <img
+                              border="0"
+                              data-imagetype="External"
+                              height="8"
+                              src="https://simg.ionos.com/2018/ONE/11/SPIN684-CUCO-18897-DE/px.gif"
+                              style="
+                                display: block;
+                                width: 1px;
+                                height: 8px;
+                                border: 0;
+                                visibility: hidden;
+                              "
+                              width="1"
+                            />
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr valign="top">
+                  <td
+                    align="left"
+                    bgcolor="#f8f8f8"
+                    style="padding: 0px; background-color: #f8f8f8"
+                  >
+                    <table
+                      border="0"
+                      cellpadding="0"
+                      cellspacing="0"
+                      style="border-collapse: collapse"
+                    >
+                      <tbody>
+                        <tr>
+                          <td
+                            height="25"
+                            style="
+                              padding: 0px;
+                              width: 1px;
+                              height: 25px;
+                              line-height: 25px;
+                            "
+                            width="1"
+                          >
+                            <img
+                              alt=""
+                              border="0"
+                              data-imagetype="External"
+                              height="25"
+                              src="https://simg.ionos.com/2018/ONE/11/SPIN684-CUCO-18897-DE/px.gif"
+                              style="
+                                display: block;
+                                width: 1px;
+                                height: 25px;
+                                border: 0;
+                                visibility: hidden;
+                              "
+                              width="1"
+                            />
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <div style="width: 640px">
+                      <table
+                        border="0"
+                        cellpadding="0"
+                        cellspacing="0"
+                        style="
+                          border-collapse: collapse;
+                          width: 100%;
+                          border-spacing: 0;
+                        "
+                        width="100%"
+                      >
+                        <tbody>
+                          <tr valign="top">
+                            <td
+                              style="
+                                padding: 0px;
+                                min-width: 25px;
+                                width: 25px;
+                                line-height: 1px;
+                                font-size: 0px;
+                              "
+                              width="25"
+                            >
+                              <img
+                                alt=""
+                                border="0"
+                                data-imagetype="External"
+                                height="1"
+                                src="https://simg.ionos.com/2018/ONE/11/SPIN684-CUCO-18897-DE/px.gif"
+                                style="
+                                  display: block;
+                                  width: 25px;
+                                  height: 1px;
+                                  border: 0;
+                                  visibility: hidden;
+                                "
+                                width="25"
+                              />
+                            </td>
+                            <td
+                              align="left"
+                              style="padding: 0px; min-width: 100%; width: 100%"
+                              width="100%"
+                            >
+                              <div style="min-height: 140px">
+                                <p>
+                                  <b style="font-weight: 600"
+                                    >Cher/Chère
+                                    <a
+                                      href="mailto:hassan.boukcim@valorhiz.com"
+                                      class="mailto-link"
+                                      target="_blank"
+                                      >hassan.boukcim@valorhiz.com</a
+                                    >,</b
+                                  >
+                                </p>
+                                <p>
+                                  Une erreur a eu lieu lors de la tentative de
+                                  sauvegarde des boîtes de réception suivantes :
+                                </p>
+                                <table style="margin-bottom: 30px" width="100%">
+                                  <tbody>
+                                    <tr style="background: #dcdcdc">
+                                      <th>N°</th>
+                                      <th>Boîte de réception</th>
+                                    </tr>
+                                    <tr style="background: #f7f7f7">
+                                      <td>1</td>
+                                      <td>
+                                        <a
+                                          href="mailto:marine.sabastia@valorhiz.com"
+                                          class="mailto-link"
+                                          target="_blank"
+                                          >marine.sabastia@valorhiz.com</a
+                                        >
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                                <p>
+                                  L'erreur peut être due à différents facteurs :
+                                </p>
+                                <ol>
+                                  <li>
+                                    <p>
+                                      L'erreur de sauvegarde peut s'être
+                                      produite en raison d'un problème de
+                                      connexion avec votre boîte de réception.
+                                    </p>
+                                  </li>
+                                  <li>
+                                    <p>
+                                      Si vous avez effectué un changement de mot
+                                      de passe, le système de Archivage d'emails
+                                      aura besoin d'un certain temps pour
+                                      prendre en compte ce changement. Dès que
+                                      la base de données aura été mise à jour,
+                                      la sauvegarde sera effectuée
+                                      rétroactivement.
+                                    </p>
+                                  </li>
+                                  <li>
+                                    <p>
+                                      Si l'erreur persiste ou si vous n'avez pas
+                                      procédé à un changement de mot de passe,
+                                      veuillez contacter notre service client.
+                                    </p>
+                                  </li>
+                                </ol>
+                              </div>
+                              <br />
+                              <hr />
+                              <br />
+                              <p>
+                                Pour toute question complémentaire, veuillez
+                                nous contacter par email :
+                                <a
+                                  href="mailto:support@ionos.fr"
+                                  class="mailto-link"
+                                  target="_blank"
+                                  >support@ionos.fr</a
+                                >
+                                ou par téléphone : 0970 808 911.
+                              </p>
+                              <p>Votre équipe IONOS</p>
+                            </td>
+                            <td
+                              style="
+                                padding: 0px;
+                                min-width: 25px;
+                                width: 25px;
+                                line-height: 1px;
+                                font-size: 0px;
+                              "
+                              width="25"
+                            >
+                              <img
+                                alt=""
+                                border="0"
+                                data-imagetype="External"
+                                height="1"
+                                src="https://simg.ionos.com/2018/ONE/11/SPIN684-CUCO-18897-DE/px.gif"
+                                style="
+                                  display: block;
+                                  width: 25px;
+                                  height: 1px;
+                                  border: 0;
+                                  visibility: hidden;
+                                "
+                                width="25"
+                              />
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </td>
+                </tr>
+                <tr valign="top">
+                  <td
+                    align="left"
+                    bgcolor="#f8f8f8"
+                    style="padding: 0px; background-color: #f8f8f8"
+                  >
+                    <table
+                      border="0"
+                      cellpadding="0"
+                      cellspacing="0"
+                      style="
+                        border-collapse: collapse;
+                        width: 100%;
+                        border-spacing: 0;
+                      "
+                      width="100%"
+                    >
+                      <tbody>
+                        <tr valign="top">
+                          <td
+                            style="
+                              padding: 0px;
+                              min-width: 25px;
+                              width: 25px;
+                              line-height: 1px;
+                              font-size: 0px;
+                            "
+                            width="25"
+                          >
+                            <img
+                              alt=""
+                              border="0"
+                              data-imagetype="External"
+                              height="1"
+                              src="https://simg.ionos.com/2018/ONE/11/SPIN684-CUCO-18897-DE/px.gif"
+                              style="
+                                display: block;
+                                width: 25px;
+                                height: 1px;
+                                border: 0;
+                                visibility: hidden;
+                              "
+                              width="25"
+                            />
+                          </td>
+                          <td align="left" style="padding: 0px">
+                            <p
+                              style="
+                                padding: 0 0 0 0;
+                                margin: 0;
+                                text-align: left;
+                                margin-bottom: 8px;
+                                line-height: 17px;
+                              "
+                            >
+                              &nbsp;<br />
+                            </p>
+                            <p
+                              style="
+                                padding: 0;
+                                margin: 0;
+                                text-align: left;
+                                margin-bottom: 13px;
+                                line-height: 13px;
+                              "
+                            >
+                              <span
+                                style="
+                                  font-family: 'Overpass Regular', Arial,
+                                    sans-serif;
+                                  font-size: 13px;
+                                  font-weight: normal;
+                                  color: #636d80;
+                                  line-height: 17px;
+                                "
+                                >IONOS SARL<br
+                              /></span>
+                            </p>
+                          </td>
+                          <td
+                            style="
+                              padding: 0px;
+                              min-width: 25px;
+                              width: 25px;
+                              line-height: 1px;
+                              font-size: 0px;
+                            "
+                            width="25"
+                          >
+                            <img
+                              alt=""
+                              border="0"
+                              data-imagetype="External"
+                              height="1"
+                              src="https://simg.ionos.com/2018/ONE/11/SPIN684-CUCO-18897-DE/px.gif"
+                              style="
+                                display: block;
+                                width: 25px;
+                                height: 1px;
+                                border: 0;
+                                visibility: hidden;
+                              "
+                              width="25"
+                            />
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+          <td
+            align="left"
+            style="padding: 0px; min-width: 50%; width: 50%"
+            width="50%"
+          >
+            <table
+              bgcolor="#003d8f"
+              border="0"
+              cellpadding="0"
+              cellspacing="0"
+              style="
+                border-collapse: collapse;
+                background-color: #003d8f;
+                width: 100%;
+                border-spacing: 0;
+              "
+              width="100%"
+            >
+              <tbody>
+                <tr>
+                  <td
+                    height="220"
+                    style="padding: 0px; line-height: 220px; height: 220px"
+                  >
+                    <img
+                      alt=""
+                      border="0"
+                      data-imagetype="External"
+                      height="220"
+                      src="https://simg.ionos.com/2018/ONE/11/SPIN684-CUCO-18897-DE/px.gif"
+                      style="
+                        display: block;
+                        width: 1px;
+                        height: 220px;
+                        border: 0;
+                        visibility: hidden;
+                      "
+                      width="1"
+                    />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
